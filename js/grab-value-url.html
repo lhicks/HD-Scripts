@@ -1,0 +1,54 @@
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script type="text/javascript" src="https://fast.fonts.net/jsapi/a019ac17-3a2e-4c94-8421-4c7ac002188f.js"></script>
+<link href="http://www.hairdirect.com/theme/mincss?v=FHAMFwVaPQRTR7XI2b76BEfmHB85m8WugbCiXWKJGaY1" rel="stylesheet"/>
+<link href="http://www.hairdirect.com/theme/app.css" rel="stylesheet"/>
+<link href="http://www.hairdirect.com/theme/awareness.css" rel="stylesheet"/>
+
+<style>
+.message {
+     font-family:verdana, arial, helvetica, sans-serif; 
+     font-size: .75em; 
+     text-align:center;
+}
+</style>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+$( document ).ready(function() {
+    //grab and parse the var value from the url
+    var error = GetQueryStringParams('errorcode');
+    function GetQueryStringParams(sParam) {
+
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++)
+
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam)
+            {
+                return sParameterName[1];
+
+            }
+        }
+    }  
+	// find the error code and hide subscribed and show invaild if code is 4
+	if(error == 4){
+    	console.log("error found: " + error);
+    	$('p#subscribed').remove();
+    	$('p#invaild').css('display','block');
+	    	setTimeout(function(){
+    			$(location).attr('href','//www.hairdirect.com/UserControls/HD_Forms/hss-impact-form.html');
+			}, 1000);
+	} else {
+		//do nothing
+	}
+});
+</script>	
+</head>
+<body>
+<p class="message">You've already subscribed.</p>
+</body>
+</html>
